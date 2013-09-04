@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alibaba.mobileim"
+    android:versionCode="270"
+    android:versionName="2.7.0" >
+
+
+    <uses-sdk android:minSdkVersion="7" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.USE_SIP" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" /><uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="com.taobao.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="com.taobao.permission.UPDATE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <permission-group
+        android:name="com.taobao.permission-group.ACCOUNT"
+        android:description="@string/permission_group_taobao_account_desc"
+        android:icon="@drawable/ic_sso_taobao_account"
+        android:label="@string/permission_group_taobao_account" />
+
+    <permission
+        android:name="com.taobao.permission.USE_CREDENTIALS"
+        android:description="@string/permission_use_taobao_account_credentials_desc"
+        android:label="@string/permission_use_taobao_account_credentials"
+        android:permissionGroup="com.taobao.permission-group.ACCOUNT"
+        android:protectionLevel="dangerous" />
+    <permission
+        android:name="com.taobao.permission.UPDATE_CREDENTIALS"
+        android:description="@string/permission_update_taobao_account_credentials_desc"
+        android:label="@string/permission_update_taobao_account_credentials"
+        android:permissionGroup="com.taobao.permission-group.ACCOUNT"
+        android:protectionLevel="dangerous" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.network"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" /><uses-feature
+        android:name="android.hardware.screen.portrait"
+        android:required="false" />
+
+    <application
+        android:name="com.alibaba.mobileim.MessengerApplication"
+        android:debuggable="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="false" />
+
+        <activity
+            android:name="com.alibaba.mobileim.SplashActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.alibaba.mobileim.ui.sharereceive.ShareReceiveActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+                        <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+            	<action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.alibaba.mobileim.ui.sharereceive.ThridAppShareReceiveActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" 
+            android:label="@string/app_name"
+            android:exported="true">
+        </activity>
+        
+        <activity
+            android:name="com.alibaba.mobileim.ui.thirdapp.TransActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="com.alibaba.mobileim.TransActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+             <intent-filter>
+                <action android:name="com.alibaba.mobileim.weitao" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.login.LoginActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.login.LoginDetectActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.login.MonitorErrorActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.login.GuideActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.login.UpgradeDataBaseActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.login.TermsActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.login.TermsAgreeActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.login.VerifyCodeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateVisible" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.FriendAddAnswerActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.systemmsg.SystemMsgHelperActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.greetingcard.GreetingCardsListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.greetingcard.GreetingCardsActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.greetingcard.GreetingCardsSetMsgAcivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.login.RegisterActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        
+         <activity
+            android:name="com.alibaba.mobileim.ui.conversation.WapTransActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent" >
+           <intent-filter>  
+               <data android:scheme="wangtalk"/>  
+                <action android:name="android.intent.action.VIEW" />  
+                <category android:name="android.intent.category.DEFAULT" />  
+                <category android:name="android.intent.category.BROWSABLE" />  
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.alibaba.mobileim.ui.plugin.ExternalTabActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+         <activity
+            android:name="com.alibaba.mobileim.ui.chat.MultiImageActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/ContentOverlay"
+            android:screenOrientation="sensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.chat.ChattingDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.chat.TribeChattingDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.tab.MainTabActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTabStyle"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.tab.WaitServiceBindedActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="adjustPan"  />
+        <activity
+            android:name="com.alibaba.mobileim.ui.chat.RoomNameSetActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.conversation.ConversationActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.SelectFriendsActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.WxTribeActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"/>
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.FriendInfoActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:name="com.alibaba.mobileim.ui.qrcodecard.GetQcodeUIActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Translucent" >
+            <intent-filter>
+                <data
+                    android:host="qr.wangxin.taobao.com"
+                    android:scheme="http" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="wangxin" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.FriendsRecommendActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.FindFriendActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.FriendAddActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateAlwaysVisible|adjustResize" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.ContactsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingLogisticAlarmActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.TaoWorldActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingProfileActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+         <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingAccountManageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingAddressActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingGenderActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingNameActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingSelfDescActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingNewMsgRemindTimeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"/>
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingNewMsgRemindTimePickerActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.imageviewer.ImageViewerActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingAboutActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.FriendFindByLBSActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.FriendFindByShakeActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.avatar.CropImage"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.BlacklistActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.BindPhoneActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.BindPhoneConfirmActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateVisible" />
+        <!--
+              <activity
+            android:name=".FriendsAssistantActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        -->
+        <activity
+            android:name="com.alibaba.mobileim.ui.map.GoogleMapActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.plugin.PluginManageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.plugin.PluginDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.plugin.PluginSecondPageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.plugin.PluginThirdPageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.plugin.PluginLogisticsDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingNewMsgRemindActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingTribeReceiveActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingPrivacyActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.setting.SettingHeadBgActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.chat.AddFastReplyActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.order.OrderListActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.order.OrderDetailActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.goldtree.GoldTreeActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.FriendsActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.SearchFriendsActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowAnimationStyle="@style/WXAnimation.Activity"
+            android:theme="@style/Theme.Translucent"/>
+        <activity
+            android:name="com.alibaba.mobileim.ui.qrcodecard.BarScanActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.qrcodecard.CodeTextActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity 
+            android:name="com.alibaba.mobileim.ui.qrcodecard.BarcodeResultActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.contact.TribeMemberActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.qrcodecard.MyQRCodeActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.pub.PublicPlatformListActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.pub.PublicPlatformAccountInfoActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.pub.PublicPlatformFriendsActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.simplewebview.SimpleWebViewActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.voip.VoipCallActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/no_animation" >
+            <intent-filter android:priority="10" >
+                <action android:name="com.alibaba.mobileim.action.INCALL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.voip.VoipAcceptActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/no_animation" >
+            <intent-filter android:priority="10" >
+                <action android:name="com.alibaba.mobileim.action.INACCEPT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.alibaba.mobileim.ui.voip.SettingExtendActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.alibaba.mobileim.ui.voip.SettingVoipActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+
+        <service
+            android:name="com.alibaba.mobileim.channel.service.InetIOService">
+            <intent-filter >
+                <action android:name="com.alibaba.mobileim.ACTION_WXSERVICE"/>
+                <data android:scheme="inetsvr"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.alibaba.mobileim.ui.voip.service.VoipService"
+            android:exported="false" 
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.alibaba.mobileim.ui.voip.service.VoipService" />
+            </intent-filter>
+        </service>
+        <service android:name="com.alibaba.mobileim.ui.system.service.WxCommandService" >
+            <intent-filter>
+                <action android:name=".service.WxCommandService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="com.alibaba.mobileim.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.alibaba.mobileim.channel.util.AlarmReceiver" />
+
+        <activity
+            android:name="com.alibaba.mobileim.ThirdAppWaitActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/no_animation" >
+        </activity>
+
+        <activity
+            android:name="com.alibaba.mobileim.ui.pub.PublicConversationActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        
+        <provider
+            android:name="com.alibaba.mobileim.gingko.model.provider.WXProvider"
+            android:authorities="com.alibaba.mobileim.gingko.model.provider" >
+        </provider>
+
+        <service
+            android:name="com.taobao.statistic.module.data.Yolanda"
+            android:process=":utremote" >
+        </service>
+        <service
+	        android:name="com.taobao.android.sso.internal.PidGetterService"
+	        android:exported="true">
+    	</service>
+    
+        <service
+            android:name="com.taobao.android.sso.internal.AuthenticationService"
+            android:enabled="false"
+            android:exported="true"
+            android:permission="android.permission.ACCOUNT_MANAGER" >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator.customTokens"
+                android:value="true" /> <!-- Only for Android 2.3.3 -->
+            <meta-data
+                android:name="@string/sso_version_code_key"
+                android:value="@integer/sso_version_code" />
+        </service>
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDcxmpYdUAtQYjGhJuBfVgMVMW7ZtCeeDw" />
+    </application>
+
+</manifest>
